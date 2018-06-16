@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from '../components/login/login.component';
+import { RegisterComponent } from '../components/register/register.component';
 import { MaterialModule } from './/material.module';
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MaterialModule } from './/material.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

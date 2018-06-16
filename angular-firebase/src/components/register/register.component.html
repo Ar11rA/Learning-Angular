@@ -1,0 +1,30 @@
+<div class="container">
+    <span class="form-title"> Register Form </span>
+    
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input [(ngModel)]="registerDTO.firstName" matInput id="register-input-fname" placeholder="First Name">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input [(ngModel)]="registerDTO.lastName" matInput id="register-input-lname" placeholder="Last Name">
+    </mat-form-field>
+    
+    <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input [(ngModel)]="registerDTO.email" matInput id="register-input-email" placeholder="Email">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input [(ngModel)]="registerDTO.username" matInput id="register-input-username" placeholder="Username">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input [(ngModel)]="registerDTO.password" matInput id="register-input-password" type="password" placeholder="Password">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="registerUser()">Register</button>
+</div>
