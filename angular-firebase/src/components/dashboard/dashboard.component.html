@@ -1,3 +1,32 @@
-<p>
-  dashboard works!
-</p>
+<div class="container">
+    <span class="form-title"> Create Post </span>
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input [(ngModel)]="post.name" matInput id="post-input-name" placeholder="Name">
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput [(ngModel)]="post.description" id="post-input-desc" Password placeholder="Description">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="createPost()">Create</button>
+</div>
+
+<div *ngIf="isLoading;then loading else not_loading"></div>
+<ng-template #loading>
+    <div class="post-container">
+        <p>
+            Loading!!
+        </p>
+    </div>
+</ng-template> -->
+<ng-template #not_loading>
+    <div class="post-container">
+        <h2>All Posts</h2>
+        <div *ngFor="let post of posts">
+            <p>{{post.name}}</p>
+            <p>{{post.description}}</p>
+        </div>
+    </div>
+</ng-template>
