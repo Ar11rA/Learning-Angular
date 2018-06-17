@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { Router } from "@angular/router";
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -9,7 +9,8 @@ export class AuthService {
 
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
-
+  @Output() isLoggedIn: EventEmitter<any> = new EventEmitter();
+  
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = _firebaseAuth.authState;
 
@@ -17,7 +18,6 @@ export class AuthService {
       (user) => {
         if (user) {
           this.userDetails = user;
-          console.log(this.userDetails);
         } else {
           this.userDetails = null;
         }
@@ -36,10 +36,12 @@ export class AuthService {
     return this._firebaseAuth.auth.signInWithEmailAndPassword(email, password)
   }
 
-  isLoggedIn() {
+  isUserLoggedIn() {
     if (this.userDetails == null) {
+      this.isLoggedIn.emit(false);
       return false;
     } else {
+      this.isLoggedIn.emit(true);
       return true;
     }
   }

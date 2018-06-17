@@ -5,16 +5,20 @@ import { Router, CanActivate } from '@angular/router';
 @Injectable()
 export class AuthGuardService implements CanActivate {
 
-  constructor(private router: Router,
-              private authService: AuthService) { }
+  public isLoggedIn: boolean;
+  constructor(private router: Router, private authService: AuthService) { 
+    authService.isLoggedIn.subscribe(val => this.changeLoggedIn(val));
+  }
+
+  changeLoggedIn(val) {
+    this.isLoggedIn = val;
+  }
 
   canActivate() {
-    if  ( this.authService.isLoggedIn() ) {
-
-      return true;
-
+    console.log('can activate called')
+    if  ( this.isLoggedIn ) {
+     return true;
     }
-
     this.router.navigate(['/']);
     return false;
   }

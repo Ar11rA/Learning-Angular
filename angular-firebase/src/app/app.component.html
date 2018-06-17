@@ -5,14 +5,29 @@
     </span>
 
     <span>Angular Sample with Firebase</span>
-    <div>
-      <a routerLink="/login">
-        Login
-      </a>
-      <a routerLink="/register">
-        Register
-      </a>
-    </div>
+    <div *ngIf="isLoggedIn;then logged_in else not_logged_in"></div>
+
+    <ng-template #logged_in>
+      <div>
+        <a routerLink="/login">
+          Home
+        </a>
+        <a routerLink="/register">
+          Logout
+        </a>
+      </div>
+    </ng-template>
+    <ng-template #not_logged_in>
+      <div>
+        <a routerLink="/login">
+          Login
+        </a>
+        <a routerLink="/register">
+          Register
+        </a>
+      </div>
+    </ng-template>
+
   </mat-toolbar>
 </div>
 <router-outlet></router-outlet>

@@ -13,18 +13,19 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent implements OnInit {
 
   public loginDTO: Login;
-  constructor(private authService: AuthService, private router: Router) { 
+  constructor(private authService: AuthService, private router: Router) {
     this.loginDTO = new Login('', '');
   }
 
   ngOnInit() {
   }
-  
-  loginUser(){
+
+  loginUser() {
     this.authService.signInRegular(this.loginDTO.username, this.loginDTO.password)
       .then((res) => {
-        console.log(res);
-        this.router.navigate(['dashboard']);
+        if (this.authService.isUserLoggedIn()) {
+          this.router.navigate(['dashboard']);
+        }
       })
       .catch((err) => console.log('error: ' + err));
   }
