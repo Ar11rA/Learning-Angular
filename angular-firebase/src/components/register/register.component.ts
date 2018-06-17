@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Register } from './register.model';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   public registerDTO : Register;
 
-  constructor() { 
+  constructor(private authService: AuthService, private router: Router) { 
     this.registerDTO = new Register('', '', '', '', '');
   }
 
@@ -18,10 +20,11 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(){
-    console.log(this.registerDTO.username);
-    console.log(this.registerDTO.firstName);
-    console.log(this.registerDTO.lastName);
-    console.log(this.registerDTO.email);
-    console.log(this.registerDTO.password);
+    this.authService.registerRegular(this.registerDTO.username, this.registerDTO.password)
+    .then((res) => {
+      console.log(res);
+      this.router.navigate(['login']);
+    })
+    .catch((err) => console.log('error: ' + err));
   }
 }
