@@ -22,6 +22,7 @@ export class DashboardComponent implements OnInit {
     this.post = new Post('', '');
     this.posts = [];
     this.isLoading = true;
+    this.dataSource = new MatTableDataSource([]);
   }
 
   ngOnInit() {
@@ -35,6 +36,7 @@ export class DashboardComponent implements OnInit {
           this.posts.push(action.payload.val());
         });
         this.isLoading = false;
+        console.log(this.posts)
         this.dataSource = new MatTableDataSource(this.posts);
       });
   }
