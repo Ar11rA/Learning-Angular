@@ -16,11 +16,11 @@
 <div *ngIf="isLoading;then loading else not_loading"></div>
 <ng-template #loading>
     <div class="post-container">
-        <p>
+        <h2>
             Loading!!
-        </p>
+        </h2>
     </div>
-</ng-template> -->
+</ng-template>
 <ng-template #not_loading>
     <div class="post-container">
         <h2>All Posts</h2>

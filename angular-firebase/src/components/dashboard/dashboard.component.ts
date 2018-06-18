@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MatTableDataSource } from '@angular/material';
 import { Post } from './post.model';
 import { ItemService } from '../../services/item.service';
 import { Observable } from 'rxjs';
@@ -14,6 +15,8 @@ export class DashboardComponent implements OnInit {
   public posts: Post[];
   public post: Post;
   public isLoading: boolean;
+  public dataSource: MatTableDataSource<Post>;
+  displayedColumns = ['name', 'description'];
 
   constructor(private itemService: ItemService) {
     this.post = new Post('', '');
@@ -27,12 +30,13 @@ export class DashboardComponent implements OnInit {
 
   getPosts(): void {
     this.itemService.getItems()
-    .subscribe(actions => {
-      actions.forEach(action => {
-        this.posts.push(action.payload.val());
+      .subscribe(actions => {
+        actions.forEach(action => {
+          this.posts.push(action.payload.val());
+        });
+        this.isLoading = false;
+        this.dataSource = new MatTableDataSource(this.posts);
       });
-      this.isLoading = false;
-    });
   }
   createPost(): void {
     this.posts = []

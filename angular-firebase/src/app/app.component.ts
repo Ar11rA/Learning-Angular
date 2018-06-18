@@ -11,10 +11,11 @@ export class AppComponent implements OnInit {
   public isLoggedIn: boolean;
   
   constructor(private authService: AuthService) {
-     authService.isLoggedIn.subscribe(val => this.changeLoggedIn(val));
+     
   }
 
   ngOnInit() {
+    this.authService.isLoggedIn.subscribe(val => this.changeLoggedIn(val));
   }
 
   changeLoggedIn(val) {
