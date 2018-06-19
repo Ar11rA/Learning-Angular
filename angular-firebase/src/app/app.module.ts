@@ -8,12 +8,13 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { environment } from '../environments/environment';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from '../router/app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from '../components/login/login.component';
 import { RegisterComponent } from '../components/register/register.component';
 import { DashboardComponent } from '../components/dashboard/dashboard.component';
-import { MaterialModule } from './/material.module';
+import { HeaderComponent } from '../components/header/header.component';
+import { MaterialModule } from '../materials/material.module';
 import { AuthService } from '../services/auth.service';
 import { AuthGuardService } from '../services/auth-guard.service';
 import { ItemService } from '../services/item.service';
@@ -23,7 +24,8 @@ import { ItemService } from '../services/item.service';
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

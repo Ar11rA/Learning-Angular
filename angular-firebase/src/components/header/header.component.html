@@ -1,0 +1,32 @@
+<div>
+  <mat-toolbar color="primary">
+    <span>
+      <mat-icon>mood</mat-icon>
+    </span>
+
+    <span>Angular Sample with Firebase</span>
+    <div *ngIf="isLoggedIn;then logged_in else not_logged_in"></div>
+
+    <ng-template #logged_in>
+      <div>
+        <a routerLink="/dashboard">
+          Home
+        </a>
+        <a routerLink="/login">
+          Logout
+        </a>
+      </div>
+    </ng-template>
+    <ng-template #not_logged_in>
+      <div>
+        <a routerLink="/login">
+          Login
+        </a>
+        <a routerLink="/register">
+          Register
+        </a>
+      </div>
+    </ng-template>
+
+  </mat-toolbar>
+</div>
