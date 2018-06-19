@@ -2,4 +2,4 @@
 
 1. Official Heroes application
 2. Angular Firebase CRUD + Auth
-3. Todo MVC
+3. Todo MVC with Elixir-Phoenix/Postgres Backend

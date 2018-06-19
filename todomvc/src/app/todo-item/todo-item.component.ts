@@ -24,5 +24,4 @@ export class TodoItemComponent implements OnInit {
     this.todoDataService.deleteTodoByIdHttp(todo.id);
   }
 
-
 }
