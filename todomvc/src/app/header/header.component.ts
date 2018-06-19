@@ -15,13 +15,12 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
-
+   
   }
 
   addTodo() {
     if (this.newTodo.title.length > 0) {
-      this.todoDataService.addTodo(this.newTodo);
-      this.newTodo = new Todo();
+      this.todoDataService.addHttpTodo(this.newTodo);
     }
     else {
       console.log('Empty string not permitted!')

@@ -15,18 +15,20 @@ export class TodoListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.todoDataService.getHttpTodos();
+    this.todoDataService.allTodos.subscribe(data => console.log(data));
   }
 
   toggleTodoComplete(todo) {
-    this.todoDataService.toggleTodoComplete(todo);
+    this.todoDataService.toggleTodoCompleteHttp(todo);
   }
 
   removeTodo(todo) {
-    this.todoDataService.deleteTodoById(todo.id);
+    this.todoDataService.deleteTodoByIdHttp(todo.id);
   }
 
   get todos() {
-    return this.todoDataService.getAllTodos();
+    return this.todoDataService.getAllTodos()
   }
 
 }

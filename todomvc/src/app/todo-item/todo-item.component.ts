@@ -17,11 +17,11 @@ export class TodoItemComponent implements OnInit {
   }
 
   toggleTodoComplete(todo) {
-    this.todoDataService.toggleTodoComplete(todo);
+    this.todoDataService.toggleTodoCompleteHttp(todo);
   }
 
   removeTodo(todo) {
-    this.todoDataService.deleteTodoById(todo.id);
+    this.todoDataService.deleteTodoByIdHttp(todo.id);
   }
 
 
